@@ -1,27 +1,28 @@
 import sqlite3
 conexion =sqlite3.connect("ventas.db")
 conexion.close()
-print("***USUARIOS***")
+
+print("***Usuarios***")
 usuarios = open("usuarios.txt", "rt", encoding="utf8")
 datos_usuarios = usuarios.read()
 print(datos_usuarios)
 
-print("***CLAVES***")
+print("***Claves***")
 claves = open("claves.txt", "rt", encoding="utf8")
 datos_claves = claves.read()
 print(datos_claves)
 
-print("***PRODUCTOS***")
+print("***Nombre ***")
 nombre = open("nombre.txt", "rt", encoding="utf8")
 datos_nombre = nombre.read()
 print(datos_nombre)
 
-print("***CODIGO DE PRODUCTO***")
+print("***Codigo ***")
 codigo = open("codigo.txt", "rt", encoding="utf8")
 datos_codigo = codigo.read()
 print(datos_codigo)
 
-print("***PRECIO DE PRODUCTO***")
+print("***Precio***")
 precio = open("precio.txt", "rt", encoding="utf8")
 datos_precio = precio.read()
 print(datos_precio)
@@ -52,7 +53,7 @@ lista_usuarios = datos_usuarios.split('\n')
 lista_claves = datos_claves.split('\n')
 for indice,valor in enumerate(zip(lista_usuarios,lista_claves)):  
     print(valor[0],valor[1])
-    cursor.execute("INSERT INTO USUARIO( USUARIO, CLAVE)VALUES('"+valor[0]+"','"+valor[1]+"')") 
+    cursor.execute("INSERT INTO USUARIO(USUARIO,CLAVE) VALUES('"+valor[0]+"','"+valor[1]+"')") 
 conexion.commit()
 conexion.close()
 
@@ -69,5 +70,4 @@ for indice,valor in enumerate(zip(lista_nombres,lista_codigos,lista_precios)):
     cursor.execute("INSERT INTO PRODUCTO(NOMBRE,CODIGO,PRECIO)VALUES('"+valor[0]+"','"+valor[1]+"','"+valor[2]+"')")
    
 conexion.commit()
-    # Cerrar Conexión
 conexion.close()
